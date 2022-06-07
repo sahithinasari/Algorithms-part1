@@ -1,0 +1,74 @@
+package Princeton;
+public class unionfind{
+private int id[];
+public int size[];
+//Constructor
+public unionfind(int N)
+{
+id=new int[N];
+size=new int[N];
+for(int i=0;i<N;i++)
+{
+id[i]=i;
+size[i]=1;//initially size of each node is assumed 1 we can also assume it as "0"
+}}
+
+private int root(int i)
+{
+while(i!=id[i])
+i=id[i];
+return i;
+}
+public boolean connected(int p,int q)
+{
+return root(p)==root(q);
+}
+public void union(int p,int q)
+{ 
+ int i=root(p);
+ int j=root(q);
+ id[i]=j;
+size[j]+=size[i];
+} 
+
+public void display(int n)
+{
+System.out.println("\nKeys");
+for(int i=0;i<n;i++)
+System.out.print(id[i]+" ");
+System.out.println("\nSize of each key");
+for(int i=0;i<n;i++)
+System.out.print(size[i]+" ");
+
+}
+public static void main(String args[])
+{
+unionfind u=new unionfind(10);
+u.union(4,3);//3 is root of 4
+u.union(3,8);
+u.union(9,8);
+u.union(6,5);
+u.union(5,0);
+u.union(0,1);
+u.union(7,1);
+u.union(2,1);
+u.union(1,8);
+u.display(10);
+	
+System.out.println(u.connected(9,7));
+}
+}
+	/*
+	We can also take connect items through user input
+	int n = StdIn.readInt();
+        WeightedQuickUnionUF uf = new WeightedQuickUnionUF(n);
+        while (!StdIn.isEmpty()) {
+            int p = StdIn.readInt();
+            int q = StdIn.readInt();
+            if (uf.find(p) == uf.find(q)) continue;
+            uf.union(p, q);
+            StdOut.println(p + " " + q);
+        }
+	*/
+
+
