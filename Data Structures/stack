@@ -1,0 +1,47 @@
+package Princeton;
+class stack1{
+	private class node{
+		String item;
+		node next;
+		}public node head=null;
+		public String pop(){
+			String it =head.item;	
+			head=head.next;
+			return it;
+		}
+		public String push(String item){
+		node ohead=head;
+		head=new node();
+		head.item=item;
+		head.next=ohead;
+		return "Item pushed";
+
+		}
+		public String peek() {
+			return head.item;
+		}
+		public void display()
+		{
+		node temp=head;
+		while(temp.next!=null)
+		{
+			System.out.println(temp.item);
+			temp=temp.next;
+		}
+		}
+		}
+	public class Stack{
+	public static void main(String args[])
+		{
+			stack1 n1=new stack1();
+			System.out.println(n1.push("Hi"));
+			System.out.println(n1.push("This"));
+			System.out.println(n1.push("is"));
+			System.out.println(n1.push("Sahithi"));
+			n1.display();
+			System.out.println("Item popped: "+n1.pop());
+			System.out.println("Peek item: "+n1.peek());
+			n1.display();
+		}
+
+   }
